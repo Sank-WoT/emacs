@@ -1,3 +1,13 @@
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (tron)))
+ '(custom-safe-themes
+   (quote
+    ("0b2e94037dbb1ff45cc3cd89a07901eeed93849524b574fa8daa79901b2bfdcf" default))))
 (progn ; standard keys
   (global-set-key (kbd "C-a") 'mark-whole-buffer-buffer) ; Select All. was move-beginning-of-line
   (global-set-key (kbd "C-f") 'isearch-forward) ; Find. was forward-char
@@ -19,12 +29,37 @@
   (global-set-key (kbd "M-i") 'backward-sentence);;
   (global-set-key (kbd "M-k") 'forward-sentence): ;;up
   (global-set-key (kbd "C-u") 'recenter): ;;up
-
   )
-;; ��������� �������
+(require 'org) ;; Вызвать org-mode
+;; Inhibit startup/splash screen
+(setq inhibit-splash-screen   t)
+(setq ingibit-startup-message t) ;; экран приветствия можно вызвать комбинацией C-h C-a
+;; óñòàíîâêà ðåæèìîâ
 (setq auto-mode-alist (cons '("README" . text-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.htm$" . html-helper-mode) auto-mode-alist))
+;; Coding-system settings
+(set-language-environment 'UTF-8)
+(if (system-is-linux) ;; для GNU/Linux кодировка utf-8, для MS Windows - windows-1251
+    (progn
+        (setq default-buffer-file-coding-system 'utf-8)
+        (setq-default coding-system-for-read    'utf-8)
+        (setq file-name-coding-system           'utf-8)
+        (set-selection-coding-system            'utf-8)
+        (set-keyboard-coding-system        'utf-8-unix)
+        (set-terminal-coding-system             'utf-8)
+        (prefer-coding-system                   'utf-8))
+    (progn
+        (prefer-coding-system                   'windows-1251)
+        (set-terminal-coding-system             'windows-1251)
+        (set-keyboard-coding-system        'windows-1251-unix)
+        (set-selection-coding-system            'windows-1251)
+        (setq file-name-coding-system           'windows-1251)
+        (setq-default coding-system-for-read    'windows-1251)
+        (setq default-buffer-file-coding-system 'windows-1251)))
+
+(setq display-time-24hr-format t) ;; 24-часовой временной формат в mode-line
+(display-time-mode             t) ;; показывать часы в mode-line
 ;; list package
 (setq package-archives '(
                          ("elpy" . "http://jorgenschaefer.github.io/packages/")
@@ -34,9 +69,18 @@
                          ("org" . "http://orgmode.org/elpa/")
                          ))
 (electric-pair-mode 1)
+(require 'package)
 
 (global-linum-mode 1) ; always show line numbers
-
+;; Bookmark settings
+(require 'bookmark)
+(setq bookmark-save-flag t) ;; автоматически сохранять закладки в файл
+(when (file-exists-p (concat user-emacs-directory "bookmarks"))
+    (bookmark-load bookmark-default-file t)) ;; попытаться найти и открыть файл с закладками
+(global-set-key (kbd "<f3>") 'bookmark-set) ;; создать закладку по F3 
+(global-set-key (kbd "<f4>") 'bookmark-jump) ;; прыгнуть на закладку по F4
+(global-set-key (kbd "<f5>") 'bookmark-bmenu-list) ;; открыть список закладок
+(setq bookmark-default-file (concat user-emacs-directory "bookmarks")) ;; хранить закладки в файл bookmarks в .emacs.d
 ;; witch start 0
 (require 'linum)
 (setq linum-format
@@ -45,7 +89,7 @@
 ;;
 
 (recentf-mode 1)
-(global-set-key (kbd "<f7>") 'recentf-open-files)
+-set-key (kbd "<f7>") 'recentf-open-files)
 
 ;; tab
 (when (>= emacs-major-version 24)
@@ -74,3 +118,11 @@
       "Rename eww browser's buffer so sites open in new page."
       (rename-buffer "eww" t))
     (add-hook 'eww-mode-hook 'xah-rename-eww-hook)))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+

@@ -1,0 +1,35 @@
+2017-11-12  Tino Calancha  <tino.calancha@gmail.com>
+
+	* packages/mines/mines.el: Bump version to 1.2
+
+2017-11-11  Stefan Monnier  <monnier@iro.umontreal.ca>
+
+	* mines/mines.el (mines-mode): Move the docstring to where it belongs.
+
+2017-11-11  Tino Calancha  <tino.calancha@gmail.com>
+
+	* packages/mines/mines.el: Bump version to 1.1
+
+2017-11-11  Tino Calancha  <tino.calancha@gmail.com>
+
+	Move game documentation into `mines-mode' docstring
+
+	* packages/mines/mines.el (mines)
+	(mines-mode): Update docstring.
+
+2017-11-10  Stefan Monnier  <monnier@iro.umontreal.ca>
+
+	* mines: Fix compilation warnings
+
+2017-11-07  Tino Calancha  <tino.calancha@gmail.com>
+
+	New package mines.el
+
+	An elisp implementation of the minesweeper game.
+	* packages/mines/mines-tests.el
+	* packages/mines/Makefile
+	* packages/mines/LICENSE
+	* packages/mines/.travis.yml
+	* packages/mines/README.md
+	* packages/mines/mines.el: New file.
+
