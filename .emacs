@@ -1,4 +1,6 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/lism/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,6 +32,17 @@
   (global-set-key (kbd "M-k") 'forward-sentence): ;;up
   (global-set-key (kbd "C-u") 'recenter): ;;up
   )
+
+;; set org mode
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+(setq linum-format "%d ");; set format
+(global-linum-mode 1) ;; set global numer
+
 (require 'org) ;; Вызвать org-mode
 ;; Inhibit startup/splash screen
 (setq inhibit-splash-screen   t)
@@ -125,4 +138,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
 
