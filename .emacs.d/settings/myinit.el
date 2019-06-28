@@ -1,0 +1,572 @@
+;; My name and e-mail adress
+(setq user-full-name   "Sank")
+(setq user-mail-adress "aserobabow95@mail.ru")
+
+;; Scrolling settings
+(setq scroll-step               1) ;; вверх-вниз по 1 строке
+(setq scroll-margin            10) ;; сдвигать буфер верх/вниз когда курсор в 10 шагах от верхней/нижней границы  
+(setq scroll-conservatively 10000)
+
+(use-package monokai-theme
+  :ensure t
+  :config (load-theme 'monokai t)
+)
+
+(use-package try
+  :ensure t)
+
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package ace-window
+  :ensure t
+  :init
+  (progn
+    (global-set-key [remap other-window] 'ace-window)
+    (custom-set-faces
+     '(aw-leading-char-face
+       ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+    ))
+
+(use-package which-key
+	:ensure t 
+	:config
+	(which-key-mode))
+
+(use-package smartparens)
+
+;; Иконки в статус-баре
+(use-package
+  mode-icons
+  :config (mode-icons-mode 1)
+  :ensure t
+)
+
+;; Показывать отступы во всех режимах
+(use-package
+  indent-guide
+  :config (indent-guide-global-mode 1)
+  :ensure t
+)
+
+;;; Дерево отмены
+(use-package
+  undo-tree
+  :config (global-undo-tree-mode 1)
+  :ensure t
+)
+
+(use-package auto-complete
+  :ensure t
+  :init
+  (progn
+    (ac-config-default)
+    (global-auto-complete-mode t)
+    ))
+
+(use-package tabbar
+  :ensure t
+  :config
+	(tabbar-mode 1)
+  :init
+  (global-set-key [M-right] 'tabbar-forward-tab)
+  (global-set-key [M-left] 'tabbar-backward-tab)
+  (global-set-key [M-up] 'tabbar-forward-group) ;; ??
+  (global-set-key [M-down] 'tabbar-backward-group) ;; ??
+)
+
+(setq indent-tabs-mode nil)
+
+(setq tab-width 2)
+(setq c-basic-offset 2)
+
+;; устанавливаем ширину таба в 4 символа
+;;(setq tab-width 4)
+;;(setq cperl-indent-level 4)
+
+(defun bjm/kill-this-buffer ()
+  "Kill the current buffer."
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+(progn ;; standard keys
+;;  (global-set-key (kbd "C-x 5 2") 'make-frame-command)
+  (global-set-key (kbd "C-h") 'beginning-of-line)
+  (global-set-key (kbd "C-;") 'end-of-line)
+  (global-set-key (kbd "M-;") 'forward-page)
+  (global-set-key (kbd "M-h") 'backward-page)
+  (global-set-key (kbd "C-q") 'emmet-expand-line)
+  (global-set-key (kbd "C-a") 'mark-whole-buffer-buffer) ; Select All. was move-beginning-of-line
+ ;; (global-set-key (kbd "C-f") 'isearch-forward) ; Find. was forward-char
+ ;; (global-set-key (kbd "C-q") 'isearch-repeat-forward) ; Find. was forward-char
+ ;; (global-set-key (kbd "C-b") 'search-backward)
+ ;; (global-set-key (kbd "C-b C-b") 'isearch-repeat-backward)
+  (global-set-key (kbd "C-r") 'isearch-forward-regexp)
+  (global-set-key (kbd "C-n") 'xah-new-empty-buffer) ;; New. was next-line
+  (global-set-key (kbd "C-S-n") 'make-frame-command) ;; New Window. was nil
+  (global-set-key (kbd "C-o") 'ido-find-file)        ;; Open. was open-line
+  (global-set-key (kbd "C-s") 'save-buffer)  ;; Save. was isearch-forward
+  (global-set-key (kbd "C-S-s") 'write-file) ;; Save As. was nil
+  (global-set-key (kbd "C-v") 'yank)         ;; Paste. was scroll-up-command
+  (global-set-key (kbd "C-e") 'kill-buffer)  ;; Close. was kill-region
+  (global-set-key (kbd "C-y") 'redo)         ;; Redo. was yank
+  (global-set-key (kbd "C-z") 'undo)         ;; Undo. was suspend-frame
+;;  (global-set-key (kbd "C-i") 'previous-line): ;;up line
+;;  (global-set-key  (kbd "C-j") 'backward-char);;left 
+;;  (define-key global-map (kbd "C-l") 'forward-char);;right
+;;  (define-key global-map (kbd "C-k") 'next-line);;down line
+  (global-set-key (kbd "M-l") 'forward-word): ;;up line
+  (global-set-key (kbd "M-j") 'backward-word);;
+  (global-set-key (kbd "M-i") 'backward-sentence);;
+  (global-set-key (kbd "M-k") 'forward-sentence) ;;up
+  (global-set-key (kbd "C-u") 'recenter) ;;up
+  (global-set-key (kbd "M-w") 'beginning-of-buffer) ;;start file
+  (global-set-key (kbd "M-s") 'end-of-buffer) 
+  (global-set-key (kbd "M-d") 'kill-word) ;;kill word right
+  (global-set-key (kbd "M-a") 'backward-kill-word) ;;kill word left
+  (global-set-key (kbd "M-o") 'kill-line) ;;kill line
+  (global-set-key (kbd "C-t") 'transpose-chars) ;; transpose chars
+  (global-set-key (kbd "M-t") 'transpose-words)
+  (global-set-key (kbd "C-x C-t") 'transpose-line)
+  (global-set-key (kbd "M-c") 'capitalize-word)
+  (global-set-key (kbd "M-u") 'upcase-word)
+;;  (global-set-key (kbd "m-s") 'downcase-word)
+  (global-set-key (kbd "M-b") 'append-to-buffer)
+  ;; set f7 to list recently opened file
+  (global-set-key (kbd "<f7>") 'recentf-open-files)
+;;  (global-set-key (kbd "C-x 5 0") 'delete-frame)
+  (global-set-key (kbd "C-x k") 'bjm/kill-this-buffer)
+)
+
+(progn (fset 'yes-or-no-p 'y-or-n-p)
+(global-set-key (kbd "<f5>") 'revert-buffer))
+
+(use-package flycheсk
+:ensure t
+:init
+(global-flycheck-mode t))
+
+(use-package jedi
+:ensure t
+:init
+(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'python-mode-hook 'jedi:ac-setup))
+
+(use-package js2-mode
+:ensure)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; Better imenu
+(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+
+(use-package js2-refactor
+:ensure t
+)
+
+(use-package xref-js2
+:ensure t
+)
+
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
+(js2r-add-keybindings-with-prefix "C-c C-r")
+(define-key js2-mode-map (kbd "C-c C-k") #'js2r-kill)
+
+;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
+;; unbind it.
+(define-key js-mode-map (kbd "M-.") nil)
+
+(add-hook 'js2-mode-hook (lambda ()
+  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+
+(use-package rjsx-mode
+:ensure t)
+(add-hook 'js2-mode-hook (lambda () (rjsx-mode t)))
+
+(global-linum-mode nil)
+(use-package nlinum-relative
+    :config
+    ;; something else you want
+    (nlinum-relative-setup-evil)
+    (add-hook 'prog-mode-hook 'nlinum-relative-mode))
+
+;; Show-paren-mode settings
+(show-paren-mode t) ;; включить выделение выражений между {},[],()
+(setq show-paren-style 'expression) ;; выделить цветом выражения между {},[],()
+
+(add-hook 'org-mode-hook 'key-chord-mode)
+(add-hook 'org-mode-hook 'smartparens-mode)
+(setq org-log-done 'time)
+
+(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+
+(add-hook 'text-mode-hook 'smartparens-mode)
+
+(use-package indium)
+
+(use-package tern
+:ensure t)
+(use-package tern-auto-complete
+:ensure t)
+(add-hook 'web-mode-hook (lambda() (tern-mode t)))
+(add-hook 'js-mode-hook (lambda () (tern-mode t)))
+(eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+      (tern-ac-setup)))
+
+(use-package json-mode
+:ensure t)
+
+;;windows only stuff
+(when (string-equal system-type "windows-nt")
+
+(progn
+
+(setq cygwin-bin "c:\\apps\\cygwin\\bin")
+
+(setq gnu-bin "C:\\apps\\GnuWin32\\gnuwin32\\bin")
+
+(setenv "PATH"
+
+(concat cygwin-bin ";" gnu-bin ";"))
+
+(setq exec-path
+
+'(cygwin-bin gnu-bin)))) 
+
+(use-package projectile
+:ensure t 
+)
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+(use-package sr-speedbar
+:ensure t
+:bind ("<f12>" . sr-speedbar-open))
+
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(desktop-save-mode t)
+
+(use-package emmet-mode
+:ensure t
+:config (add-hook 'web-mode-hook 'emmet-mode))
+(global-set-key (kbd "C-e") 'emmet-expand-line)
+
+(use-package magit
+:ensure t)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x p") 'magit-push-current-to-pushremote)
+
+(use-package web-mode
+:ensure t)
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode)) ;; add vue as mode web-mode
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+
+(use-package sublimity
+  :ensure t
+)
+(setq sublimity-scroll-weight 10
+      sublimity-scroll-drift-length 5)
+;;(sublimity-mode 1)
+(require 'sublimity)
+(require 'sublimity-scroll)
+(require 'sublimity-map)
+(require 'sublimity-attractive)
+;; entry comman restart
+
+;; Set up load path
+;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+; '(custom-enabled-themes (quote (tron)))
+; '(custom-safe-themes
+  ;(quote
+    ;("0b2e94037dbb1ff45cc3cd89a07901eeed93849524b574fa8daa79901b2bfdcf" default))))
+
+(defun xah-run-current-file ()
+  "Execute the current file.
+For example, if the current buffer is x.py, then it'll call 「python x.py」 in a shell.
+Output is printed to buffer “*xah-run output*”.
+
+The file can be Emacs Lisp, PHP, Perl, Python, Ruby, JavaScript, TypeScript, golang, Bash, Ocaml, Visual Basic, TeX, Java, Clojure.
+File suffix is used to determine what program to run.
+
+If the file is modified or not saved, save it automatically before run.
+
+URL `http://ergoemacs.org/emacs/elisp_run_current_file.html'
+Version 2018-07-01"
+  (interactive)
+  (let (
+        ($outputb "*xah-run output*")
+        (resize-mini-windows nil)
+        ($suffix-map
+         ;; (‹extension› . ‹shell program name›)
+         `(
+           ("php" . "php")
+           ("pl" . "perl")
+           ("py" . "python")
+           ("py3" . ,(if (string-equal system-type "windows-nt") "c:/Python32/python.exe" "python3"))
+           ("rb" . "ruby")
+           ("go" . "go run")
+           ("hs" . "runhaskell")
+           ("js" . "node")
+           ("mjs" . "node --experimental-modules ")
+           ("ts" . "tsc") ; TypeScript
+           ("tsx" . "tsc")
+           ("sh" . "bash")
+           ("clj" . "java -cp ~/apps/clojure-1.6.0/clojure-1.6.0.jar clojure.main")
+           ("rkt" . "racket")
+           ("ml" . "ocaml")
+           ("vbs" . "cscript")
+           ("tex" . "pdflatex")
+           ("latex" . "pdflatex")
+           ("java" . "javac")
+           ;; ("pov" . "/usr/local/bin/povray +R2 +A0.1 +J1.2 +Am2 +Q9 +H480 +W640")
+           ))
+        $fname
+        $fSuffix
+        $prog-name
+        $cmd-str)
+    (when (not (buffer-file-name)) (save-buffer))
+    (when (buffer-modified-p) (save-buffer))
+    (setq $fname (buffer-file-name))
+    (setq $fSuffix (file-name-extension $fname))
+    (setq $prog-name (cdr (assoc $fSuffix $suffix-map)))
+    (setq $cmd-str (concat $prog-name " \""   $fname "\""))
+    (cond
+     ((string-equal $fSuffix "el")
+      (load $fname))
+     ((or (string-equal $fSuffix "ts") (string-equal $fSuffix "tsx"))
+      (if (fboundp 'xah-ts-compile-file)
+          (xah-ts-compile-file current-prefix-arg)
+        (if $prog-name
+            (progn
+              (message "Running")
+              (shell-command $cmd-str $outputb ))
+          (message "No recognized program file suffix for this file."))))
+     ((string-equal $fSuffix "go")
+      ;; (when (fboundp 'gofmt) (gofmt) )
+      (shell-command $cmd-str $outputb ))
+     ((string-equal $fSuffix "java")
+      (progn
+        (shell-command (format "java %s" (file-name-sans-extension (file-name-nondirectory $fname))) $outputb )))
+     (t (if $prog-name
+            (progn
+              (message "Running")
+              (shell-command $cmd-str $outputb ))
+          (message "No recognized program file suffix for this file."))))))
+(global-set-key (kbd "M-a") 'xah-run-current-file)
+
+;;web browser
+(setq browse-url-browser-function 'eww-browse-url)
+(when (fboundp 'eww)
+  (progn
+    (defun xah-rename-eww-hook ()
+      "Rename eww browser's buffer so sites open in new page."
+      (rename-buffer "eww" t))
+    (add-hook 'eww-mode-hook 'xah-rename-eww-hook)))
+
+(use-package nyan-mode
+:ensure t
+:config (add-hook 'web-mode-hook 'nyan-mode))
+
+(use-package bm
+:ensure t)
+(global-set-key (kbd "<C-f2>") 'bm-toggle)
+(global-set-key (kbd "<f2>")   'bm-next)
+(global-set-key (kbd "<S-f2>") 'bm-previous)
+(setq temporary-bookmark-p t)
+
+(use-package gist
+:ensure t)
+
+;; работа с несколькими марками сразу
+(use-package mark-multiple
+:ensure t)
+(global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+(global-set-key (kbd "C-<") 'mark-previous-like-this)
+(global-set-key (kbd "C->") 'mark-next-like-this)
+(global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
+
+    (add-hook 'sgml-mode-hook
+              (lambda ()
+                (require 'rename-sgml-tag)
+                (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)))
+
+(use-package expand-region
+:ensure t
+:bind  ("C-=" . 'er/expand-region)
+)
+
+(use-package neotree
+:ensure t)
+(global-set-key [f8] 'neotree-toggle)
+
+(use-package all-the-icons)
+
+(use-package multiple-cursors
+:ensure t)
+(global-set-key [f6] 'mc/mark-pop)
+(key-chord-define-global "qx" 'mc/mark-next-like-this);; down cursor
+(key-chord-define-global "qz" 'mc/mark-previous-like-this);; up cursor 
+(key-chord-define-global "qs" 'mc/mark-next-like-this-word);; add cursor world (delete near siblings words)
+(global-set-key [f9] 'mc/mark-all-like-this)
+
+(use-package smex
+:ensure t)
+
+(use-package key-chord
+:ensure t)
+(key-chord-mode 1)
+
+(key-chord-define-global "w1" 'er/expand-region)
+(key-chord-define-global "mg" 'magit-status)
+(key-chord-define-global "cp" 'projectile-command-map)
+(key-chord-define-global "q2" 'delete-frame)
+(key-chord-define-global "q1" 'make-frame-command)
+(key-chord-define-global "hj"  'undo)
+(key-chord-define-global "fg"  'isearch-forward)
+(key-chord-define-global "bg"  'isearch-backward)
+(key-chord-define-global "qa" 'string-rectangle)
+(key-chord-define-global "qw" 'kill-ring-save)
+(key-chord-define-global "qt" 'google-translate-smooth-translate)
+(key-chord-define-global "qd" 'kill-buffer)
+(key-chord-define-global "zx" 'mc/edit-lines)
+(key-chord-define-global "fv" 'ace-jump-mode)
+(key-chord-define-global "fn" 'isearch-repeat-forward)
+(key-chord-define-global "bn" 'isearch-repeat-backward)
+
+(use-package hydra
+  :ensure t
+)
+(defhydra hydra-zoom (global-map "<f2>")
+      "zoom"
+      ("g" text-scale-increase "in")
+      ("l" text-scale-decrease "out"))
+
+(defhydra hydra-buffer-menu (:color pink
+                             :hint nil)
+  "
+^Mark^             ^Unmark^           ^Actions^          ^Search
+^^^^^^^^-----------------------------------------------------------------
+_m_: mark          _u_: unmark        _x_: execute       _R_: re-isearch
+_s_: save          _U_: unmark up     _b_: bury          _I_: isearch
+_d_: delete        ^ ^                _g_: refresh       _O_: multi-occur
+_D_: delete up     ^ ^                _T_: files only: % -28`Buffer-menu-files-only
+_~_: modified
+"
+  ("m" Buffer-menu-mark)
+  ("u" Buffer-menu-unmark)
+  ("U" Buffer-menu-backup-unmark)
+  ("d" Buffer-menu-delete)
+  ("D" Buffer-menu-delete-backwards)
+  ("s" Buffer-menu-save)
+  ("~" Buffer-menu-not-modified)
+  ("x" Buffer-menu-execute)
+  ("b" Buffer-menu-bury)
+  ("g" revert-buffer)
+  ("T" Buffer-menu-toggle-files-only)
+  ("O" Buffer-menu-multi-occur :color blue)
+  ("I" Buffer-menu-isearch-buffers :color blue)
+  ("R" Buffer-menu-isearch-buffers-regexp :color blue)
+  ("c" nil "cancel")
+  ("v" Buffer-menu-select "select" :color blue)
+  ("o" Buffer-menu-other-window "other-window" :color blue)
+  ("q" quit-window "quit" :color blue))
+
+(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
+
+(use-package google-translate
+:ensure t)
+(setq google-translate-translation-directions-alist
+      '(("en" . "ru")))
+(set-face-attribute 'google-translate-translation-face nil :height 1.4)
+
+(use-package fireplace
+:ensure t)
+
+(use-package atomic-chrome
+:ensure t)
+
+(use-package emms
+:ensure t)
+ ;;** EMMS
+ ;; Autoload the id3-browser and bind it to F7.
+ ;; You can change this to your favorite EMMS interface.vf
+ (autoload 'emms-smart-browse "emms-browser.el" "Browse with EMMS" t)
+ (global-set-key [(f10)] 'emms-smart-browse)
+
+ (with-eval-after-load 'emms
+   (emms-standard) ;; or (emms-devel) if you want all features
+   (setq emms-source-file-default-directory "C:/Users/serobabov_as/Music/")
+
+   ;; Might want to check `emms-info-functions',
+   ;; `emms-info-libtag-program-name',
+   ;; `emms-source-file-directory-tree-function'
+   ;; as well.
+
+   ;; Determine which player to use.
+   ;; If you don't have strong preferences or don't have
+   ;; exotic files from the past (wma) `emms-default-players`
+   ;; is probably all you need.
+   (if (executable-find "mplayer")
+       (setq emms-player-list '(emms-player-mplayer))
+     (emms-default-players))
+
+   ;; For libre.fm see `emms-librefm-scrobbler-username' and
+   ;; `emms-librefm-scrobbler-password'.
+   ;; Future versions will use .authoinfo.gpg.
+   )
+
+(setq exec-path (append exec-path '("/usr/local/bin")))
+(require 'emms-player-mplayer)
+(emms-standard)
+(emms-default-players)
+(define-emms-simple-player mplayer '(file url)
+      (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
+                    ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
+                    ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
+      "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen")
+
+(use-package scss-mode
+:ensure t)
+
+(use-package ace-jump-mode
+:ensure t )
+
+(use-package command-log-mode
+:ensure t )
+
+(use-package wttrin
+  :ensure t
+  :commands (wttrin)
+  :init (setq wttrin-default-accept-language '("Accept-Language" . "zh-TW"))
+)
+;; need add language
+
+(defun insert-todays-date (arg)
+  (interactive "P")
+  (insert (if arg
+              (format-time-string "%d-%m-%Y")
+            (format-time-string "%Y-%m-%d"))))
+
+(use-package restart-emacs
+  :ensure t
+)
+;; entry comman restart

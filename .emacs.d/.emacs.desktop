@@ -1,0 +1,55 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Fri Jun 28 16:42:51 2019
+;; Desktop file format version 208
+;; Emacs version 25.3.1
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (23829 61227 444981 600000) (desktop . "208") "serobabov_as@atlas90" nil nil ((((font-backend uniscribe gdi) (font . "-outline-Courier New-normal-normal-normal-mono-13-*-*-*-c-*-iso8859-1") (border-width . 2) (internal-border-width . 0) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "#F8F8F2") (background-color . "#272822") (mouse-color . "#F8F8F2") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 8) (right-fringe . 8) (alpha) (menu-bar-lines . 1) (tool-bar-lines . 3) (height . 48) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 17) (scroll-bar-height . 0) (fullscreen . maximized) (display-type . color) (background-mode . dark) (cursor-color . "#F8F8F2") (environment) (frameset--id . "F44E-EC9A-583F-9099") (frameset--mini t . t) (width . 195) (modeline . t) (minibuffer . t) (unsplittable) (left + -8) (top + -8) (icon-name) (visibility . t) (display . "w32") (explicit-name) (tool-bar-position . top)) ((min-height . 4) (min-width . 10) (min-height-ignore . 4) (min-width-ignore . 9) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 64) (min-pixel-width . 80) (min-pixel-height-ignore . 64) (min-pixel-width-ignore . 72) (min-pixel-height-safe . 16) (min-pixel-width-safe . 16)) leaf (pixel-width . 1600) (pixel-height . 702) (total-width . 200) (total-height . 43) (normal-height . 1.0) (normal-width . 1.0) (buffer ".emacs" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins 2) (scroll-bars nil 3 t nil 0 t) (vscroll . 0) (dedicated) (point . 1) (start . 1))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("s" "o" "m" "a" "f" "a" "d" "mu" "e"))
+(setq regexp-search-ring '("f"))
+(setq register-alist nil)
+(setq file-name-history '("c:/Users/serobabov_as/Documents/vue/timer.html" "c:/Users/serobabov_as/Music/xxxtentacion_moonlight(zvooq.eu).mp3" "c:/Users/serobabov_as/Music" "c:/Users/serobabov_as/Music/." "c:/Users/serobabov_as/Music" "../" "c:/Users/serobabov_as/Music/" "" "~/Documents/vue/timer.html" "~/.emacs.d/settings/myinit.el" "~/.emacs.d/settings/myinit1.el" "~/.emacs.d/settings/myinit.el" "~/Documents/vue/form.html" "~/.emacs" "~/init.el" "~/.emacs.d/settings/myinit.org" "~/Desktop/ŒÐŒÚŒÚŒà/css.css" "~/project/js/pole/style.css" "~/js/sf-chain/app/index.js" "~/project/js/breakout/index.js" "~/project/js/pole/index.js" "~/Documents/jquery-3.3.1.js" "~/.emacs.d/sample/emacskey.org" "~/Desktop/ŒÁŒÔŒÕŒÛŒÐŒâŒì/site1.txt" "~/.ssh/id_rsa.pub" "~/.emacs.d/elpa/cider-20190302.114/cider-autoloads.el" "~/.emacs.d/elpa/clojure-mode-20190302.1102/clojure-mode-autoloads.el" "~/.emacs.d/elpa/queue-0.2/queue-autoloads.el" "~/.emacs.d/elpa/spinner-1.7.3/spinner-autoloads.el" "~/.emacs.d/elpa/seq-2.20/seq-autoloads.el" "~/.emacs.d/elpa/sesman-20190208.1437/sesman-autoloads.el"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "c:/Users/serobabov_as/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  '(which-key-mode smartparens-mode indent-guide-mode undo-tree-mode auto-complete-mode flycheck-mode linum-mode projectile-mode override-global-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-dos))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "c:/Users/serobabov_as/Documents/vue/timer/timer.html"
+  "timer.html"
+  'web-mode
+  '(which-key-mode indent-guide-mode undo-tree-mode auto-complete-mode flycheck-mode linum-mode tern-mode projectile-mode override-global-mode emmet-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-dos))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "c:/Users/serobabov_as/.emacs.d/settings/myinit.org"
+  "myinit.org"
+  'org-mode
+  '(which-key-mode smartparens-mode indent-guide-mode undo-tree-mode flycheck-mode linum-mode projectile-mode override-global-mode)
+  14314
+  '(15840 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-dos) (truncate-lines . t))
+  '((mark-ring (15035 14344 14343 14215 14165 14393 10160 10140 10119 10079 14042 9975 21108 21108 21109 14444))))
+

@@ -1,0 +1,107 @@
+Sank
+
+
+Table of Contents
+_________________
+
+1 Org-mode
+.. 1.1 Motion
+.. 1.2 Structure editing
+.. 1.3 Table
+.. 1.4 Todo
+.. 1.5 Export
+..... 1.5.1 DONE Ta
+..... 1.5.2 TODO task                                             :boss:
+..... 1.5.3 TODO task2
+..... 1.5.4 TODO task4
+
+
+1 Org-mode
+==========
+
+1.1 Motion
+~~~~~~~~~~
+
+   Key      Option                           
+  -------------------------------------------
+   C-c C-n  Next heading                     
+   C-c C-p  Previos heading                  
+   C-C C-f  Next heading same level          
+   C-c C-b  Previous heading same level      
+   C-c C-u  Backward to higher level heading 
+                                           
+  -------------------------------------------
+
+
+1.2 Structure editing
+~~~~~~~~~~~~~~~~~~~~~
+
+   Key           Option                                                                
+  -------------------------------------------------------------------------------------
+   M-Ret         Insert new heading with same level as                                 
+   M-left/right  Promote/demote current heading by one level.                          
+   M-S-up/down   Move subtree up/down (swap with previous/next subtree of same level). 
+                                                                                     
+  -------------------------------------------------------------------------------------
+
+
+1.3 Table
+~~~~~~~~~
+
+   Key             Option                                                                                             
+  --------------------------------------------------------------------------------------------------------------------
+   C-c             Convert the active region to table                                                                 
+   Tab             Create a new row if necessary                                                                      
+   M-left/M-right  move the current column   left/right                                                               
+   M-S-left        Kill the current column                                                                            
+   M-S-right       Insert a new column to the lef of the cursor position                                              
+   M-up/M-down     Move the current row up/down                                                                       
+   m-s-up          Kill tje current row up/down                                                                       
+   M-S-down        Insert a new row above the curent row                                                              
+   С-с -           Insert a horizontal line below current row, and move into the lline created above the current line 
+                                                                                                                    
+  --------------------------------------------------------------------------------------------------------------------
+
+
+1.4 Todo
+~~~~~~~~
+
+   Key           option                                                                                   
+  --------------------------------------------------------------------------------------------------------
+   C-c C-t       Rotate the TODO state of the current item among (unmarked) -> TODO -> DONE -> (unmarked) 
+   S-right/left  Select the followinf/preceding TODO state                                                
+   C-c / t       View TODO items in a sparse tree                                                         
+   S-M-RET       Insert a new TODO entry                                                                  
+   C-c ,         Set priority                                                                             
+   C-c C-q       Set tags                                                                                 
+   C-c \         Search at tag                                                                            
+   C-c C-x p     Add prop                                                                                 
+   C-c C-c d     Delete prop                                                                              
+   C-c .         Set Date                                                                                 
+   C-c C-d       Insert Deadline                                                                          
+   C-c C-s       Insert Scheduled                                                                         
+   C-c C-x C-i   Start clock                                                                              
+   C-c C-x C-o   Stop clock                                                                               
+  --------------------------------------------------------------------------------------------------------
+
+
+1.5 Export
+~~~~~~~~~~
+
+   Key  option 
+
+
+1.5.1 DONE Ta
+-------------
+
+
+1.5.2 TODO task                                                   :boss:
+---------------
+
+
+1.5.3 TODO task2
+----------------
+
+
+1.5.4 TODO task4
+----------------
